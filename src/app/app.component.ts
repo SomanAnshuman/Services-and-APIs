@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   users: User[] = [];
+  selectedUser: User | undefined;
 
   constructor(private userService: UsersService) {}
 
@@ -26,15 +27,25 @@ export class AppComponent {
   }
 
   addUser(user: User) {
-    this.userService.saveUsers(user).subscribe((data: User) => {
+    if (!this.selectedUser) {
+      this.userService.saveUsers(user).subscribe((data: User) => {
+        if (data) this.getUser();
+      });
+    } else {
+      console.log('update user here', user);
+    }
+  }
+
+  deleteUser(id: string) {
+    this.userService.deleteUser(id).subscribe((data: User) => {
+      console.log(data);
       if (data) this.getUser();
     });
   }
 
-  deleteUser(id: string){
-    this.userService.deleteUser(id).subscribe((data: User) => {
-      console.log(data);
-      if (data) this.getUser();
-    })
+  selectUser(id: string) {
+    this.userService.getSelectedUser(id).subscribe((data: User) => {
+      this.selectedUser = data;
+    });
   }
 }

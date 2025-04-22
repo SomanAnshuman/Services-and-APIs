@@ -17,7 +17,7 @@
       name="name"
       placeholder="Enter name"
       class="border placeholder:text-gray-500"
-      ngModel
+      [ngModel]="selectedUser?.name"
     />
     <br /><br />
     <input
@@ -25,7 +25,7 @@
       name="email"
       placeholder="Enter email"
       class="border placeholder:text-gray-500"
-      ngModel
+      [ngModel]="selectedUser?.email"
     />
     <br /><br />
     <input
@@ -33,14 +33,14 @@
       name="age"
       placeholder="Enter age"
       class="border placeholder:text-gray-500"
-      ngModel
+      [ngModel]="selectedUser?.age"
     />
     <br /><br />
 
     <button
       class="border px-1 pb-1 bg-gray-200 cursor-pointer active:bg-gray-400"
     >
-      Add User
+      @if(!selectedUser){ Add User } @else { Update User }
     </button>
   </form>
   <br />
@@ -52,6 +52,10 @@
     <li>{{ user.age }}</li>
     <button class="border cursor-pointer" (click)="deleteUser(user.id)">
       Delete
+    </button>
+    <br />
+    <button class="border cursor-pointer" (click)="selectUser(user.id)">
+      Update
     </button>
     <br /><br />
     }
