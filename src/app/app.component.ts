@@ -32,7 +32,11 @@ export class AppComponent {
         if (data) this.getUser();
       });
     } else {
-      console.log('update user here', user);
+      const userData = { ...user, id: this.selectedUser.id };
+      this.userService.updateUser(userData).subscribe((data: User) => {
+        if (data) this.getUser();
+      });
+      delete this.selectedUser;
     }
   }
 
