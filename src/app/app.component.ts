@@ -8,18 +8,14 @@ import { ProductService } from './service/product.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  productData:
-    | {
-        name: string;
-        brand: string;
-        price: string;
-      }[]
-    | undefined;
+  productList:any;
 
-  constructor(private productService: ProductService) {}
-
-  getProductData() {
-    this.productData = this.productService.getProductData();
-    console.log(this.productData);
+  constructor(private productService: ProductService){}
+  
+  ngOnInit(){
+    this.productService.getProductList().subscribe((data:any) => {
+      console.log(data);
+      this.productList = data.products;
+    })
   }
 }
