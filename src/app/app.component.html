@@ -8,15 +8,49 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <body class="m-2">
-  <h1 class="text-2xl font-bold">API Call service</h1>
+  <h1 class="text-2xl font-bold">POST API method</h1>
+  <br />
+
+  <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+    <input
+      type="text"
+      name="name"
+      placeholder="Enter name"
+      class="border placeholder:text-gray-500"
+      ngModel
+    />
+    <br /><br />
+    <input
+      type="text"
+      name="email"
+      placeholder="Enter email"
+      class="border placeholder:text-gray-500"
+      ngModel
+    />
+    <br /><br />
+    <input
+      type="text"
+      name="age"
+      placeholder="Enter age"
+      class="border placeholder:text-gray-500"
+      ngModel
+    />
+    <br /><br />
+
+    <button
+      class="border px-1 pb-1 bg-gray-200 cursor-pointer active:bg-gray-400"
+    >
+      Add User
+    </button>
+  </form>
   <br />
 
   <ul class="list-disc pl-4">
-  @for (user of users; track user) {
-      <li>{{user.name}}</li>
-      <li>{{user.email}}</li>
-      <li>{{user.age}}</li>
-      <br />
+    @for (user of users; track user) {
+    <li>{{ user.name }}</li>
+    <li>{{ user.email }}</li>
+    <li>{{ user.age }}</li>
+    <br />
     }
   </ul>
 </body>
