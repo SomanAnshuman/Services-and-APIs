@@ -30,4 +30,11 @@ export class AppComponent {
       if (data) this.getUser();
     });
   }
+
+  deleteUser(id: string){
+    this.userService.deleteUser(id).subscribe((data: User) => {
+      console.log(data);
+      if (data) this.getUser();
+    })
+  }
 }
