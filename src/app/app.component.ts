@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from './service/users.service';
+import { User } from './interfaces/User';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,12 @@ import { UsersService } from './service/users.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  users: any;
+  users: User[] = [];
   
   constructor(private userService: UsersService) {}
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data: any) => {
+    this.userService.getUsers().subscribe((data: User[]) => {
       this.users = data;
       console.log(this.users)
     });
