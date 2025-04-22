@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService } from './service/product.service';
+import { UsersService } from './service/users.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,14 @@ import { ProductService } from './service/product.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  productList:any;
-
-  constructor(private productService: ProductService){}
+  users: any;
   
-  ngOnInit(){
-    this.productService.getProductList().subscribe((data:any) => {
-      console.log(data);
-      this.productList = data.products;
-    })
+  constructor(private userService: UsersService) {}
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe((data: any) => {
+      this.users = data;
+      console.log(this.users)
+    });
   }
 }
