@@ -7,7 +7,21 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<body class="m-2">
+  <h1 class="text-2xl font-bold">Service</h1>
+  <br />
 
+  <button
+    (click)="getProductData()"
+    class="border px-1 pb-1 bg-gray-200 cursor-pointer active:bg-gray-400"
+  >
+    Load Product Data
+  </button>
+
+  @for (item of productData; track item) {
+    <h2 class="font-mono">{{ item.name }}, {{ item.brand }}, {{ item.price }}</h2>
+  }
+</body>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
